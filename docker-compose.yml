@@ -1,0 +1,17 @@
+version: '3.4'
+
+services:
+  apiacquiring:
+    image: postamat-hardware-acquiring
+    environment:
+      - dotnet=Development
+    build:
+      context: .
+      dockerfile: Postamat.Hardware.Acquiring.Api/Dockerfile
+    restart: on-failure
+    devices:
+      - "/dev/ttyACM0"
+    volumes:
+      - "/home/pi/linux_stub:/app/sberbank-pax"
+    ports:
+      - "1126:80"

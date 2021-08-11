@@ -1,17 +1,13 @@
 version: '3.4'
 
 services:
-  apiacquiring:
-    image: postamat-hardware-acquiring
+  fakerapi:
+    image: faker
     environment:
       - dotnet=Development
     build:
       context: .
-      dockerfile: Postamat.Hardware.Acquiring.Api/Dockerfile
+      dockerfile: Faker.Api/Dockerfile
     restart: on-failure
-    devices:
-      - "/dev/ttyACM0"
-    volumes:
-      - "/home/pi/linux_stub:/app/sberbank-pax"
     ports:
-      - "1126:80"
+      - "1226:80"
